@@ -1,0 +1,5 @@
+nome = input('Qual o nome que lhe foi dado ao nascer?')
+idade = input('Você nasceu com os dinossauros ou é do século passado?')
+peso = input('A massa da galáxia se equivale a seu peso? se não, informe-o!')
+debug = input('Será que dessa vez vai dar certo?')
+print(nome , idade , peso , debug)

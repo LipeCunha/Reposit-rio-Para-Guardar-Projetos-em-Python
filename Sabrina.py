@@ -1,0 +1,6 @@
+nome = input('Qual o nome do amor da minha vida?')
+idade = input('Quantos anos a razão do meu viver tem?')
+peso = input('Quanto que você me ama xodó?')
+erro = input('erro'+'erro'+'erro'+'erro'+'code'+'failed')
+pegadinha = input('Deu erro não, era só pra dizer que te amo mesmo!')
+print('então seu nome é' , nome , 'e você tem quantos anos mesmo?' , idade , 'e você me ama de que tamanho?' , peso) 
