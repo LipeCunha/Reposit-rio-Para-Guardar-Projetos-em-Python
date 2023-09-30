@@ -1,0 +1,89 @@
+VANALÍSE DE DADOS EM PYTHON
+
+# Passo a Passo
+
+!pip install pandas
+!pip install numpy
+!pip install openpyx1
+!pip install plotly
+
+# 1° - Importar a base de dados
+
+import pandas as pd (pd é um apelido para o pandas)
+
+tabela = pandas.read_csv("cancelamentos.csv")
+tabela = tabela.drop(Columns="CustomerID")
+
+
+# 2° - Visualizar a base de dados para verificar se as informações necessárias estão contidas nesse base de dados
+
+display(tabela)
+
+# informação que não te ajuda só te atrapalha !
+
+
+
+# 3° - Corrigir as cagadas da base de dados
+
+display(tabela.info())
+
+#valores vazios
+tabela = tabela.dropna()
+
+#valores do tipo errado
+
+
+
+# 4° - Primeira Análise do cancelamento dos clientes (Qual o % de clientes que cancelou)
+
+display(tabela["cancelou"].valuecounts())
+display(tabela["cancelou"].valuecounts(normalize=True).map("{:.1%}".format))
+
+display(tabela["duracao_contrato"].valuecounts())
+display(tabela["duracao_contrato "].valuecounts(normalize=True).map("{:.1%}".format))
+
+
+# normalize = valor da base / pelo total
+
+agrupamento = tabela.groupby("duracao_contrato").mean(numeric_only=True)
+
+display(agrupamento)
+
+# Todos os clientes do contrato mensal cancelaram a assinatura
+# sugestão para oferecer descontos para os contratos trimestrais/anuais
+
+tabela = tabela[tabela["duracao_contrato"] != "Monthly"
+display(tabela["cancelou"].valuecounts())
+display(tabela["cancelou"].valuecounts(normalize=True).map("{:.1%}".format))
+
+# 5° - Análise da causa de cancelamento dos clientes
+
+import plotly.express as px
+
+#cria gráfico
+for coluna in tabela.columns:
+grafico = px.histogram(tabela, x=coluna, color="cancelou")
+
+#exibe gráfico
+grafico.show()
+
+
+# Todos os clientes do contrato mensal cancelaram a assinatura
+
+# Criar gráficos para fazer a análise
+
+# sugestão para oferecer descontos para os contratos trimestrais/anuais
+
+# Ligações para o call center acima de 4, cancelam
+
+# Dias de atraso maior que 20, todos os clientes cancelam
+
+
+tabela = tabela[tabela["ligacoes_callcenter"] < 5]
+tabela = tabela[tabela["dias_atraso"] <= 20]
+tabela = tabela[tabela["duracao_contrato"] != "Monthly"
+display(tabela["cancelou"].valuecounts())
+display(tabela["cancelou"].valuecounts(normalize=True).map("{:.1%}".format))
+
+
+# Você nunca vai resolver 100% dos casos de cancelamento
